@@ -1,0 +1,58 @@
+
+01.CREATE TABLE Airport(Code varchar(10) PRIMARY key ,
+                     Name varchar(10) NOT NULL ,
+                     Country varchar(10) NOT NULL ,
+                     City varchar(10) NOT NULL );
+
+02.CREATE TABLE Airlines(Acode varchar(10) PRIMARY KEY,
+                     Aname varchar(10) NOT NULL);
+
+03.CREATE TABLE Airplane(RegNO varchar(10) PRIMARY key ,
+                     Type varchar(10) NOT NULL ,
+                     seats varchar(10) NOT NULL ,
+                     Acode varchar(10) NOT NULL,
+                     code varchar(10) NOT NULL,
+                     FOREIGN key (Acode) REFERENCES Airlines(Acode),
+                     FOREIGN key (Code) REFERENCES Airport(Code));
+
+04.CREATE TABLE Fare(Fare_type varchar(10) PRIMARY key ,
+                     Fare_dec varchar(10) NOT NULL ,
+                     conditions varchar(10) NOT NULL);
+
+05.CREATE TABLE Passenger(pid varchar(10) PRIMARY key ,
+                     Name varchar(10) NOT NULL ,
+                     Sex varchar(10) NOT NULL ,
+                     Age varchar(10) NOT NULL,
+                     Address varchar(10) NOT NULL,
+                      Email varchar(10) NOT NULL,
+                       Contact varchar(10) NOT NULL,
+                       Office_id varchar(10) NOT NULL);
+
+06.CREATE TABLE Booking_office(Office_id varchar(10) PRIMARY KEY,
+                           Office_Name varchar(10) NOT NULL,
+                            Flight varchar(10) NOT NULL,
+                         FOREIGN key (Flight) REFERENCES Flight(Flight));
+
+07.CREATE TABLE Flight(Flight varchar(10) PRIMARY key ,
+                     Class varchar(10) NOT NULL ,
+                    Ffrom varchar(10) NOT NULL ,
+                     Fto varchar(10) NOT NULL,
+                   Dep_time varchar(10) NOT NULL,
+                   Dep_date varchar(10) NOT NULL,
+                   Arr_time varchar(10) NOT NULL,
+                   Arr_date varchar(10) NOT NULL,
+                   Acode varchar(10) NOT NULL,
+                   RouteNo varchar(10) NOT NULL,
+                   FOREIGN key (Acode) REFERENCES Airlines(Acode),
+                   FOREIGN key (RouteNo) REFERENCES Route(RouteNo));
+08.ALTER TABLE Flight CHANGE Dep_date Dep_date date NOT NULL;
+
+09.ALTER TABLE Flight CHANGE Arr_date Arr_date date NOT NULL;
+
+10.ALTER TABLE Flight CHANGE Arr_time Arr_time time NOT NULL;
+
+11.ALTER TABLE Flight CHANGE Dep_time Dep_time time NOT NULL;
+
+12.ALTER TABLE Passenger CHANGE Age Age int(3)NOT NULL;
+
+
